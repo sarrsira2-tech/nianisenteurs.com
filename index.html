@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niani Senteurs — Rituels de femmes, réinventés</title>
+  <meta name="description" content="Niani Senteurs — Soins corps premium inspirés des rituels de femmes africaines. Gamme Peau de Reine, Niani Noir, Sahel Doré." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terracotta: #8B4513;
+      --terracotta-dark: #6B3410;
+      --terracotta-light: #A0522D;
+      --or: #C9A84C;
+      --or-light: #D4B96A;
+      --creme: #FAF5EC;
+      --creme-dark: #F0E8D8;
+      --noir: #1A1A1A;
+      --noir-mid: #2A2A2A;
+      --texte: #3A2A1A;
+      --texte-clair: #6B5B4E;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, Helvetica, sans-serif; color: var(--texte); background: var(--creme); overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: Georgia, 'Times New Roman', serif; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled { background: rgba(250,245,236,0.97); box-shadow: 0 2px 20px rgba(139,69,19,0.1); }
+    .nav-logo { font-family: Georgia, serif; font-size: 1.1rem; letter-spacing: 0.18em; color: var(--creme); transition: color 0.4s; text-transform: uppercase; }
+    nav.scrolled .nav-logo { color: var(--terracotta); }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,245,236,0.85); transition: color 0.3s; }
+    nav.scrolled .nav-links a { color: var(--texte-clair); }
+    .nav-links a:hover { color: var(--or) !important; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--creme); transition: background 0.4s; }
+    nav.scrolled .nav-hamburger span { background: var(--terracotta); }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--creme); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 36px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: Georgia, serif; font-size: 1.6rem; color: var(--terracotta); }
+    .mobile-close { position: absolute; top: 20px; right: 28px; font-size: 2rem; cursor: pointer; color: var(--texte); background: none; border: none; }
+
+    /* ===== BUTTONS ===== */
+    .btn { display: inline-block; padding: 14px 40px; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; border: 1.5px solid; cursor: pointer; transition: all 0.3s; font-family: Arial, sans-serif; }
+    .btn-or { background: var(--or); border-color: var(--or); color: var(--noir); }
+    .btn-or:hover { background: var(--or-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.35); }
+    .btn-outline-creme { background: transparent; border-color: var(--creme); color: var(--creme); }
+    .btn-outline-creme:hover { background: var(--creme); color: var(--terracotta); }
+    .btn-outline-or { background: transparent; border-color: var(--or); color: var(--or); }
+    .btn-outline-or:hover { background: var(--or); color: var(--noir); }
+    .btn-outline-terracotta { background: transparent; border-color: var(--terracotta); color: var(--terracotta); }
+    .btn-outline-terracotta:hover { background: var(--terracotta); color: var(--creme); }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    .section-label { font-size: 0.66rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--or); margin-bottom: 14px; }
+    .or-divider { width: 48px; height: 1px; background: var(--or); margin: 18px auto; }
+
+    /* ===== 1. HERO ===== */
+    #hero {
+      position: relative; height: 100vh; min-height: 620px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      background: linear-gradient(135deg, var(--terracotta-dark) 0%, var(--terracotta) 60%, #9B5523 100%);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 100px 60px 60px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: '';
+      position: absolute; top: -100px; left: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.08);
+    }
+
+    .hero-left::after {
+      content: '';
+      position: absolute; bottom: -80px; right: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(250,245,236,0.05);
+    }
+
+    .hero-brand-tag {
+      font-size: 0.64rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 32px;
+      opacity: 0; animation: fadeUp 0.9s ease 0.3s forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 4.5vw, 4.2rem); line-height: 1.08;
+      color: var(--creme); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.9s ease 0.6s forwards;
+    }
+
+    .hero-title em { font-style: italic; color: var(--or); }
+
+    .hero-tagline {
+      font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(250,245,236,0.6); margin-bottom: 48px;
+      opacity: 0; animation: fadeUp 0.9s ease 0.9s forwards;
+    }
+
+    .hero-cta { opacity: 0; animation: fadeUp 0.9s ease 1.1s forwards; display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .hero-right {
+      position: relative; overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top;
+      transform: scale(1.05);
+      transition: transform 8s ease;
+    }
+
+    .hero-right img.loaded { transform: scale(1); }
+
+    .hero-right-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--terracotta-dark) 0%, transparent 25%);
+    }
+
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 60px; z-index: 2;
+      display: flex; align-items: center; gap: 16px;
+      color: rgba(250,245,236,0.5); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+    }
+
+    .hero-scroll::before {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--or); opacity: 0.6;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== 2. MARQUE BANNER ===== */
+    #marque-banner {
+      background: var(--noir);
+      padding: 20px 40px;
+      display: flex; align-items: center; justify-content: center; gap: 60px;
+      overflow: hidden;
+    }
+
+    .marque-banner-logo {
+      height: 60px; width: auto; opacity: 0.9;
+    }
+
+    .marque-stats {
+      display: flex; gap: 60px;
+    }
+
+    .marque-stat {
+      text-align: center;
+      border-left: 1px solid rgba(201,168,76,0.2);
+      padding-left: 60px;
+    }
+
+    .marque-stat:first-child { border-left: none; padding-left: 0; }
+
+    .stat-val {
+      font-family: Georgia, serif; font-size: 1.6rem;
+      color: var(--or); display: block;
+    }
+
+    .stat-lbl {
+      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(250,245,236,0.4); margin-top: 4px;
+    }
+
+    /* ===== 3. HISTOIRE ===== */
+    #histoire { padding: 110px 40px; background: var(--creme); }
+
+    .histoire-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+
+    .histoire-img-wrap { position: relative; }
+
+    .histoire-img-wrap img { width: 100%; height: 580px; object-fit: cover; object-position: top center; }
+
+    .histoire-img-accent { position: absolute; bottom: -18px; right: -18px; width: 100px; height: 100px; border: 1.5px solid var(--or); z-index: -1; }
+
+    .histoire-img-label {
+      position: absolute; bottom: 24px; left: 24px;
+      background: var(--or); color: var(--noir);
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 8px 16px;
+    }
+
+    .histoire-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.15; color: var(--terracotta); margin-bottom: 24px; }
+    .histoire-text p { font-size: 0.97rem; line-height: 1.9; color: var(--texte-clair); margin-bottom: 16px; }
+    .histoire-text p strong { color: var(--terracotta); font-style: italic; }
+
+    .histoire-values { display: flex; gap: 40px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--creme-dark); }
+    .val-item { text-align: center; }
+    .val-num { font-family: Georgia, serif; font-size: 2.2rem; color: var(--terracotta); display: block; }
+    .val-label { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texte-clair); margin-top: 4px; }
+
+    /* ===== 4. COLLECTION ===== */
+    #collection { padding: 110px 40px; background: var(--terracotta-dark); }
+
+    .collection-header { text-align: center; max-width: 600px; margin: 0 auto 24px; }
+    .collection-header h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--creme); margin-bottom: 14px; }
+    .collection-header p { color: rgba(250,245,236,0.65); font-size: 0.92rem; line-height: 1.7; }
+
+    /* Collection banner — 3 tubes */
+    .collection-banner {
+      max-width: 1100px; margin: 0 auto 48px;
+      position: relative; overflow: hidden;
+    }
+
+    .collection-banner img {
+      width: 100%; height: 420px; object-fit: cover;
+      object-position: center 20%;
+    }
+
+    .collection-banner-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(107,52,16,0.85) 100%);
+      display: flex; align-items: flex-end; padding: 36px;
+    }
+
+    .collection-banner-label {
+      font-family: Georgia, serif; font-size: 1.1rem;
+      color: var(--creme); letter-spacing: 0.06em;
+    }
+
+    .collection-banner-label span { color: var(--or); }
+
+    /* Product cards */
+    .collection-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+    }
+
+    .product-card { position: relative; overflow: hidden; cursor: pointer; }
+    .product-card img { width: 100%; height: 480px; object-fit: cover; object-position: center top; transition: transform 0.6s ease; }
+    .product-card:hover img { transform: scale(1.05); }
+
+    .product-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,26,26,0.88) 0%, rgba(26,26,26,0.1) 55%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;
+      transition: background 0.4s;
+    }
+
+    .product-card.nuit .product-overlay {
+      background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(26,26,26,0.25) 55%);
+    }
+
+    .product-badge {
+      position: absolute; top: 18px; right: 18px;
+      background: var(--or); color: var(--noir);
+      font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 12px;
+    }
+
+    .product-gamme { font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--or); margin-bottom: 8px; }
+    .product-name { font-family: Georgia, serif; font-size: 1.5rem; color: var(--creme); margin-bottom: 6px; line-height: 1.2; }
+    .product-notes { font-size: 0.76rem; color: rgba(250,245,236,0.6); letter-spacing: 0.06em; margin-bottom: 14px; font-style: italic; }
+    .product-price { font-family: Georgia, serif; font-size: 1rem; color: var(--or); }
+    .product-price span { font-size: 0.68rem; color: rgba(250,245,236,0.45); font-family: Arial, sans-serif; margin-left: 6px; }
+    .product-cta { margin-top: 14px; opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s; }
+    .product-card:hover .product-cta { opacity: 1; transform: translateY(0); }
+
+    /* Niani Noir styled card (dark) */
+    .product-card-noir {
+      background: var(--noir);
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden; cursor: pointer;
+    }
+
+    .product-card-noir-visual {
+      flex: 1; min-height: 300px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0a0a0a 100%);
+    }
+
+    .product-card-noir-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+
+    .noir-product-img {
+      width: 65%; max-width: 160px;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+      transition: transform 0.5s ease;
+    }
+
+    .product-card-noir:hover .noir-product-img { transform: translateY(-8px) scale(1.03); }
+
+    .noir-or-line {
+      width: 40px; height: 1px; background: var(--or);
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+    }
+
+    .product-card-noir-info {
+      padding: 28px; border-top: 1px solid rgba(201,168,76,0.12);
+    }
+
+    /* ===== 5. FRAGRANCES ===== */
+    #fragrances { padding: 110px 40px; background: var(--creme); }
+
+    .fragrances-layout {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: start;
+    }
+
+    .fragrances-header { margin-bottom: 56px; }
+    .fragrances-header h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--terracotta); margin-bottom: 14px; }
+    .fragrances-header p { color: var(--texte-clair); font-size: 0.95rem; line-height: 1.7; max-width: 500px; }
+
+    .fragrance-item { padding: 36px 0; border-bottom: 1px solid var(--creme-dark); display: grid; grid-template-columns: 56px 1fr; gap: 28px; align-items: start; }
+    .fragrance-item:last-child { border-bottom: none; }
+    .fragrance-num { font-family: Georgia, serif; font-size: 3rem; color: var(--creme-dark); line-height: 1; transition: color 0.3s; }
+    .fragrance-item:hover .fragrance-num { color: var(--or); }
+    .fragrance-gamme { font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--or); margin-bottom: 6px; }
+    .fragrance-name { font-family: Georgia, serif; font-size: 1.6rem; color: var(--terracotta); margin-bottom: 10px; }
+    .fragrance-item.nuit .fragrance-name { color: var(--noir); }
+    .fragrance-desc { font-size: 0.93rem; line-height: 1.82; color: var(--texte-clair); margin-bottom: 16px; }
+    .fragrance-notes { display: flex; flex-wrap: wrap; gap: 7px; }
+    .note-tag { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border: 1px solid var(--creme-dark); color: var(--texte-clair); }
+    .note-tag.or { border-color: var(--or); color: var(--or); }
+
+    .fragrances-visual { position: sticky; top: 120px; }
+
+    .fragrances-img-stack { position: relative; }
+
+    .fragrances-img-main {
+      width: 100%; object-fit: cover;
+      box-shadow: 20px 20px 60px rgba(139,69,19,0.15);
+    }
+
+    .fragrances-img-accent {
+      position: absolute; bottom: -24px; left: -24px;
+      width: 55%;
+      box-shadow: 10px 10px 30px rgba(0,0,0,0.2);
+      border: 4px solid var(--creme);
+    }
+
+    .fragrances-or-tag {
+      position: absolute; top: 24px; right: -12px;
+      background: var(--or); color: var(--noir);
+      font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 10px 16px; writing-mode: vertical-rl;
+    }
+
+    /* ===== 6. COFFRET ===== */
+    #coffret {
+      background: var(--noir);
+      position: relative; overflow: hidden;
+    }
+
+    .coffret-inner {
+      max-width: 1100px; margin: 0 auto; padding: 100px 40px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+
+    .coffret-img-col { position: relative; }
+
+    .coffret-main-img {
+      width: 100%;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+
+    .coffret-img-border {
+      position: absolute; inset: -12px;
+      border: 1px solid rgba(201,168,76,0.2);
+      pointer-events: none;
+    }
+
+    .coffret-img-badge {
+      position: absolute; top: -16px; right: 24px;
+      background: var(--or); color: var(--noir);
+      font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 18px;
+    }
+
+    .coffret-text h2 { font-size: clamp(2rem, 3.5vw, 3rem); color: var(--creme); margin-bottom: 16px; line-height: 1.1; }
+    .coffret-text h2 em { font-style: italic; color: var(--or); }
+    .coffret-text p { font-size: 0.93rem; line-height: 1.82; color: rgba(250,245,236,0.7); margin-bottom: 14px; }
+
+    .coffret-quote {
+      border-left: 2px solid var(--or); padding-left: 20px;
+      margin: 28px 0; font-family: Georgia, serif; font-style: italic;
+      font-size: 0.93rem; color: rgba(250,245,236,0.75); line-height: 1.75;
+    }
+
+    .coffret-contents { margin: 28px 0; }
+    .coffret-contents h4 { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or); margin-bottom: 12px; }
+    .coffret-item-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(250,245,236,0.07); font-size: 0.86rem; color: rgba(250,245,236,0.75); }
+    .coffret-item-row::before { content: '✦'; color: var(--or); font-size: 0.58rem; flex-shrink: 0; }
+
+    .coffret-variants { display: flex; gap: 8px; margin: 20px 0; }
+    .variant-btn { flex: 1; padding: 11px 6px; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(250,245,236,0.18); color: rgba(250,245,236,0.6); background: transparent; cursor: pointer; transition: all 0.3s; }
+    .variant-btn:hover, .variant-btn.active { border-color: var(--or); color: var(--or); }
+
+    .coffret-price-block { display: flex; align-items: baseline; gap: 12px; margin-top: 24px; }
+    .coffret-price { font-family: Georgia, serif; font-size: 2.4rem; color: var(--or); }
+    .coffret-price-detail { font-size: 0.76rem; color: rgba(250,245,236,0.45); }
+
+    .coffret-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ===== 7. CONTACT ===== */
+    #contact { padding: 110px 40px; background: var(--creme); }
+
+    .contact-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+    .contact-inner h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--terracotta); margin-bottom: 14px; }
+    .contact-inner > p { font-size: 0.95rem; line-height: 1.75; color: var(--texte-clair); max-width: 520px; margin: 0 auto 52px; }
+
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 48px; }
+    .contact-card { background: var(--creme-dark); padding: 40px 24px; text-align: center; transition: background 0.3s, transform 0.3s; }
+    .contact-card:hover { background: var(--terracotta); transform: translateY(-4px); }
+    .contact-card:hover .contact-card-title, .contact-card:hover .contact-card-value { color: var(--creme); }
+    .contact-card:hover .contact-icon { color: var(--or); }
+    .contact-icon { font-size: 1.8rem; margin-bottom: 16px; color: var(--terracotta); transition: color 0.3s; display: flex; justify-content: center; }
+    .contact-card-title { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texte-clair); margin-bottom: 8px; transition: color 0.3s; }
+    .contact-card-value { font-family: Georgia, serif; font-size: 0.92rem; color: var(--texte); transition: color 0.3s; }
+
+    .contact-wa-main {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: #25D366; color: white;
+      padding: 18px 48px; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .contact-wa-main:hover { background: #128C7E; transform: translateY(-3px); box-shadow: 0 12px 35px rgba(37,211,102,0.3); }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--noir); padding: 56px 40px 28px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(250,245,236,0.07);
+    }
+
+    .footer-logo-img { width: 140px; margin-bottom: 12px; filter: brightness(0.9); }
+    .footer-slogan { font-size: 0.68rem; color: var(--or); letter-spacing: 0.14em; }
+
+    .footer-links { display: flex; gap: 60px; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-col h4 { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: 0.8rem; color: rgba(250,245,236,0.5); transition: color 0.3s; }
+    .footer-col a:hover { color: var(--or); }
+
+    .footer-bottom { padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-size: 0.7rem; color: rgba(250,245,236,0.25); }
+    .footer-legal a { font-size: 0.7rem; color: rgba(250,245,236,0.25); margin-left: 20px; }
+    .footer-legal a:hover { color: var(--or); }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 1000;
+      width: 56px; height: 56px; background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;
+    }
+    .whatsapp-float:hover { transform: scale(1.12); box-shadow: 0 8px 30px rgba(37,211,102,0.45); }
+    .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+    .whatsapp-tooltip {
+      position: absolute; right: 68px; white-space: nowrap;
+      background: var(--noir); color: var(--creme); font-size: 0.7rem; padding: 8px 14px;
+      opacity: 0; transform: translateX(8px); transition: opacity 0.3s, transform 0.3s; pointer-events: none;
+    }
+    .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; transform: translateX(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1000px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 120px 32px 80px; min-height: 100vh; }
+      .histoire-inner { grid-template-columns: 1fr; gap: 48px; }
+      .histoire-img-wrap img { height: 380px; }
+      .collection-grid { grid-template-columns: 1fr; }
+      .product-card img, .product-card-noir-visual { height: 360px; }
+      .fragrances-layout { grid-template-columns: 1fr; }
+      .fragrances-visual { display: none; }
+      .coffret-inner { grid-template-columns: 1fr; }
+      .coffret-img-col { order: -1; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      #histoire, #fragrances, #contact, #collection { padding: 72px 20px; }
+      .histoire-values { flex-wrap: wrap; gap: 24px; }
+      .marque-stats { gap: 32px; }
+      .marque-stat { padding-left: 32px; }
+      #marque-banner { gap: 24px; padding: 16px 20px; }
+      .coffret-inner { padding: 72px 20px; }
+      .footer-links { gap: 32px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.4rem; }
+      .collection-grid { gap: 3px; }
+      .coffret-variants { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Niani Senteurs</a>
+  <ul class="nav-links">
+    <li><a href="#histoire">Notre Histoire</a></li>
+    <li><a href="#collection">La Collection</a></li>
+    <li><a href="#fragrances">Fragrances</a></li>
+    <li><a href="#coffret">Coffret</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="openMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()">✕</button>
+  <a href="#histoire" onclick="closeMenu()">Notre Histoire</a>
+  <a href="#collection" onclick="closeMenu()">La Collection</a>
+  <a href="#fragrances" onclick="closeMenu()">Fragrances</a>
+  <a href="#coffret" onclick="closeMenu()">Coffret</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- ===== 1. HERO ===== -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-brand-tag">Dakar, Sénégal &nbsp;·&nbsp; Fondé par Sira Tiati Sarr</p>
+    <h1 class="hero-title">Rituels de<br>femmes,<br><em>réinventés</em></h1>
+    <p class="hero-tagline">Skin &nbsp;·&nbsp; Scent &nbsp;·&nbsp; Ritual</p>
+    <div class="hero-cta">
+      <a href="#collection" class="btn btn-or">Découvrir la Collection</a>
+      <a href="#coffret" class="btn btn-outline-creme">Coffret Cadeau</a>
+    </div>
+    <div class="hero-scroll">Défiler</div>
+  </div>
+  <div class="hero-right">
+    <img src="assets/tube-peau-reine.jpg" alt="Niani Senteurs — Body Cream" id="heroImg" loading="eager" />
+    <div class="hero-right-overlay"></div>
+  </div>
+</section>
+
+<!-- ===== MARQUE BANNER ===== -->
+<div id="marque-banner">
+  <img src="assets/logo-dark.png" alt="Niani Senteurs" class="marque-banner-logo" />
+  <div class="marque-stats">
+    <div class="marque-stat">
+      <span class="stat-val">3</span>
+      <span class="stat-lbl">Univers olfactifs</span>
+    </div>
+    <div class="marque-stat">
+      <span class="stat-val">100%</span>
+      <span class="stat-lbl">Inspiré d'Afrique</span>
+    </div>
+    <div class="marque-stat">
+      <span class="stat-val">Premium</span>
+      <span class="stat-lbl">Packaging mat & or</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2. HISTOIRE ===== -->
+<section id="histoire">
+  <div class="histoire-inner">
+    <div class="histoire-img-wrap reveal-left">
+      <img src="assets/sira.jpeg" alt="Sira Tiati Sarr — Fondatrice Niani Senteurs" loading="lazy" />
+      <div class="histoire-img-accent"></div>
+      <span class="histoire-img-label">Fondé à Dakar, Sénégal</span>
+    </div>
+    <div class="histoire-text reveal-right">
+      <p class="section-label">Notre Histoire</p>
+      <h2>L'héritage du<br>Royaume du Niani</h2>
+      <div class="or-divider" style="margin-left:0;"></div>
+      <p>
+        Niani Senteurs naît d'une conviction profonde : les rituels de beauté des femmes africaines méritent d'être <strong>célébrés, préservés et portés au monde entier</strong>. Notre nom rend hommage au Royaume du Niani — berceau de sagesse, de féminité et de transmission.
+      </p>
+      <p>
+        Derrière chaque produit, il y a <strong>Sira Tiati Sarr</strong>, fondatrice et co-gérante de Niani Production Services. Née dans la tradition du soin corporel sénégalais, elle a voulu marier l'héritage olfactif de Dakar à l'exigence d'un packaging premium international.
+      </p>
+      <p>
+        Tahara, bakhour, thiourayes revisités — nos formulations s'inspirent de ces gestes ancestraux transmis de mère en fille, reformulés avec des ingrédients d'exception pour une femme moderne, nomade et consciente.
+      </p>
+      <div class="histoire-values">
+        <div class="val-item">
+          <span class="val-num">3</span>
+          <span class="val-label">Univers olfactifs</span>
+        </div>
+        <div class="val-item">
+          <span class="val-num">100%</span>
+          <span class="val-label">Inspiré d'Afrique</span>
+        </div>
+        <div class="val-item">
+          <span class="val-num">∞</span>
+          <span class="val-label">Traditions vivantes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. LA COLLECTION ===== -->
+<section id="collection">
+  <div class="collection-header reveal">
+    <p class="section-label" style="color:var(--or);">La Collection</p>
+    <h2 style="color:var(--creme);">Trois lignes.<br>Un seul rituel.</h2>
+    <div class="or-divider"></div>
+    <p>Crème Corps 230ml & Brume Parfumée 236ml — Beurre de karité & Huile de baobab</p>
+  </div>
+
+  <!-- Banner 3 tubes -->
+  <div class="collection-banner reveal">
+    <img src="assets/collection-tubes.jpg" alt="Niani Senteurs — Collection complète" loading="lazy" />
+    <div class="collection-banner-overlay">
+      <div class="collection-banner-label">
+        Gamme Jour &amp; Nuit &nbsp;<span>·</span>&nbsp; Packaging mat, bouchons dorés
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 cards produits -->
+  <div class="collection-grid">
+
+    <!-- Peau de Reine -->
+    <div class="product-card reveal">
+      <img src="assets/tube-peau-reine.jpg" alt="Peau de Reine — Musc Tahara" loading="lazy" />
+      <div class="product-overlay">
+        <p class="product-gamme">Gamme Jour</p>
+        <h3 class="product-name">Peau de Reine</h3>
+        <p class="product-notes">Musc Tahara · Poudré · Soyeux</p>
+        <div class="product-price">15 000 F <span>crème · 12 000 F brume</span></div>
+        <div class="product-cta">
+          <a href="https://wa.me/221000000000?text=Bonjour%2C%20je%20souhaite%20commander%20Peau%20de%20Reine." class="btn btn-outline-creme" style="padding:10px 20px;font-size:0.62rem;" target="_blank" rel="noopener">Commander</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Niani Noir -->
+    <div class="product-card-noir reveal" style="transition-delay:0.15s;">
+      <div class="product-card-noir-visual">
+        <img src="assets/collection-tubes.jpg" alt="Niani Noir" class="noir-product-img" style="width:100%;height:100%;object-fit:cover;object-position:left center;filter:none;max-width:none;" loading="lazy" />
+        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,0.7) 0%,rgba(10,10,10,0.2) 40%,rgba(10,10,10,0.85) 100%);"></div>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:28px;text-align:center;">
+          <div style="width:32px;height:1px;background:var(--or);margin-bottom:16px;"></div>
+        </div>
+        <div class="noir-or-line"></div>
+      </div>
+      <div class="product-card-noir-info">
+        <p class="product-gamme" style="color:var(--or);">Gamme Nuit</p>
+        <h3 class="product-name" style="color:var(--creme);font-size:1.5rem;margin-bottom:6px;">Niani Noir</h3>
+        <p class="product-notes" style="color:rgba(250,245,236,0.55);">Oud Fumé · Bakhour · Ambré</p>
+        <div class="product-price" style="margin-bottom:14px;">15 000 F <span style="color:rgba(250,245,236,0.35);">crème · 12 000 F brume</span></div>
+        <a href="https://wa.me/221000000000?text=Bonjour%2C%20je%20souhaite%20commander%20Niani%20Noir." class="btn btn-outline-or" style="padding:10px 20px;font-size:0.62rem;" target="_blank" rel="noopener">Commander</a>
+      </div>
+    </div>
+
+    <!-- Sahel Doré -->
+    <div class="product-card reveal" style="transition-delay:0.3s;">
+      <img src="assets/brume-parfumee.jpg" alt="Sahel Doré — Floral Oriental" loading="lazy" />
+      <span class="product-badge">Édition Limitée</span>
+      <div class="product-overlay">
+        <p class="product-gamme">Gamme Jour</p>
+        <h3 class="product-name">Sahel Doré</h3>
+        <p class="product-notes">Rose · Jasmin · Orchidée · Fond Chaud</p>
+        <div class="product-price">15 000 F <span>crème · 12 000 F brume</span></div>
+        <div class="product-cta">
+          <a href="https://wa.me/221000000000?text=Bonjour%2C%20je%20souhaite%20commander%20Sahel%20Dor%C3%A9." class="btn btn-outline-creme" style="padding:10px 20px;font-size:0.62rem;" target="_blank" rel="noopener">Commander</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 4. NOS FRAGRANCES ===== -->
+<section id="fragrances">
+  <div class="fragrances-layout">
+    <div>
+      <div class="fragrances-header reveal">
+        <p class="section-label">Nos Univers Olfactifs</p>
+        <h2>L'art du parfum<br>à l'africaine</h2>
+        <div class="or-divider" style="margin-left:0;"></div>
+        <p>Chaque fragrance raconte une histoire. Un voyage sensoriel ancré dans la tradition, sublimé par la modernité.</p>
+      </div>
+
+      <div class="fragrance-item reveal">
+        <div class="fragrance-num">01</div>
+        <div class="fragrance-content">
+          <p class="fragrance-gamme">Gamme Jour · Rituel Intime</p>
+          <h3 class="fragrance-name">Peau de Reine</h3>
+          <p class="fragrance-desc">Le musc tahara est le parfum de la peau propre, de la femme qui se prépare dans le silence de sa chambre. Doux, poudré, enveloppant — il évoque la sérénité d'un rituel matinal accompli avec soin.</p>
+          <div class="fragrance-notes">
+            <span class="note-tag or">Musc Tahara</span>
+            <span class="note-tag">Notes poudrées</span>
+            <span class="note-tag">Accord propre</span>
+            <span class="note-tag">Fond doux</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fragrance-item nuit reveal">
+        <div class="fragrance-num">02</div>
+        <div class="fragrance-content">
+          <p class="fragrance-gamme" style="color:var(--noir);">Gamme Nuit · Midnight Ritual</p>
+          <h3 class="fragrance-name">Niani Noir</h3>
+          <p class="fragrance-desc">L'oud est la mémoire de l'Afrique orientale. Fumé, boisé, résineux — Niani Noir est le parfum des nuits chaudes de Dakar, du bakhour qui monte lentement, des conversations qui durent jusqu'à l'aube.</p>
+          <div class="fragrance-notes">
+            <span class="note-tag or">Oud Fumé</span>
+            <span class="note-tag">Bakhour</span>
+            <span class="note-tag">Ambre noir</span>
+            <span class="note-tag">Résine</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fragrance-item reveal">
+        <div class="fragrance-num">03</div>
+        <div class="fragrance-content">
+          <p class="fragrance-gamme">Gamme Jour · Édition Limitée</p>
+          <h3 class="fragrance-name">Sahel Doré</h3>
+          <p class="fragrance-desc">Le Sahel à l'heure dorée — quand la lumière caresse les dunes et que les fleurs s'ouvrent avant la chaleur. Un floral oriental sensuel et lumineux sur un fond chaud qui reste sur la peau comme un souvenir heureux.</p>
+          <div class="fragrance-notes">
+            <span class="note-tag or">Rose</span>
+            <span class="note-tag">Jasmin</span>
+            <span class="note-tag">Orchidée</span>
+            <span class="note-tag">Fond ambré</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual sticky -->
+    <div class="fragrances-visual reveal-right">
+      <div class="fragrances-img-stack">
+        <img src="assets/brume-parfumee.jpg" alt="Brume Parfumée Niani Senteurs" class="fragrances-img-main" loading="lazy" />
+        <img src="assets/tube-peau-reine.jpg" alt="Crème Corps Niani Senteurs" class="fragrances-img-accent" loading="lazy" />
+        <div class="fragrances-or-tag">Fine Fragrance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. COFFRET ===== -->
+<section id="coffret">
+  <div class="coffret-inner">
+
+    <div class="coffret-img-col reveal-left">
+      <img src="assets/coffret-ouvert.jpg" alt="Coffret Rituel du Soir — Niani Senteurs" class="coffret-main-img" loading="lazy" />
+      <div class="coffret-img-border"></div>
+      <div class="coffret-img-badge">Idée Cadeau</div>
+    </div>
+
+    <div class="coffret-text reveal-right">
+      <p class="section-label">Coffret Premium</p>
+      <h2>Rituel<br><em>du Soir</em></h2>
+      <div class="or-divider" style="margin-left:0;"></div>
+      <p>Le cadeau ultime pour une femme qui mérite d'être choyée. Une boîte rigide aimantée, un écrin de mousse noire, et à l'intérieur — tout le nécessaire pour un rituel complet.</p>
+
+      <blockquote class="coffret-quote">
+        "Un rituel pour le corps. Une invitation à prendre le temps, à nourrir la peau, et à se reconnecter à soi. — Niani Senteurs."
+      </blockquote>
+
+      <div class="coffret-contents">
+        <h4>Contenu du Coffret</h4>
+        <div class="coffret-item-row">Crème Corps 230ml — Beurre de karité & Huile de baobab</div>
+        <div class="coffret-item-row">Brume Parfumée 236ml — Fine Fragrance Mist</div>
+        <div class="coffret-item-row">Boîte rigide aimantée premium</div>
+        <div class="coffret-item-row">Insert mousse noire & message intérieur imprimé</div>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--or);margin-bottom:10px;">Choisir votre fragrance</h4>
+        <div class="coffret-variants">
+          <button class="variant-btn active" onclick="selectVariant(this)">Peau de Reine</button>
+          <button class="variant-btn" onclick="selectVariant(this)">Niani Noir</button>
+          <button class="variant-btn" onclick="selectVariant(this)">Sahel Doré</button>
+        </div>
+      </div>
+
+      <div class="coffret-price-block">
+        <span class="coffret-price">30 000 F</span>
+        <span class="coffret-price-detail">CFA &nbsp;·&nbsp; €46 &nbsp;·&nbsp; $50 USD</span>
+      </div>
+
+      <div class="coffret-cta">
+        <a href="https://wa.me/221000000000?text=Bonjour%2C%20je%20souhaite%20commander%20un%20Coffret%20Rituel%20du%20Soir." class="btn btn-or" target="_blank" rel="noopener">Commander via WhatsApp</a>
+        <a href="mailto:sirasarr@nianisenteurs.com?subject=Commande%20Coffret%20Rituel%20du%20Soir" class="btn btn-outline-or">Par Email</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 6. CONTACT ===== -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label reveal">Nous Contacter</p>
+    <h2 class="reveal">Votre rituel<br>commence ici</h2>
+    <div class="or-divider reveal"></div>
+    <p class="reveal">Commande, question, collaboration — nous répondons dans la journée. Bienvenue dans l'univers Niani Senteurs.</p>
+
+    <div class="contact-grid">
+      <a href="https://wa.me/221000000000?text=Bonjour%20Niani%20Senteurs%2C%20je%20souhaite%20passer%20une%20commande." class="contact-card reveal" target="_blank" rel="noopener">
+        <div class="contact-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="contact-card-title">WhatsApp</div>
+        <div class="contact-card-value">Commander maintenant</div>
+      </a>
+      <a href="mailto:sirasarr@nianisenteurs.com" class="contact-card reveal" style="transition-delay:0.15s;">
+        <div class="contact-icon">✉</div>
+        <div class="contact-card-title">Email</div>
+        <div class="contact-card-value">sirasarr@nianisenteurs.com</div>
+      </a>
+      <a href="https://instagram.com/nianisenteurs" class="contact-card reveal" style="transition-delay:0.3s;" target="_blank" rel="noopener">
+        <div class="contact-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <div class="contact-card-title">Instagram</div>
+        <div class="contact-card-value">@nianisenteurs</div>
+      </a>
+    </div>
+
+    <div class="reveal">
+      <a href="https://wa.me/221000000000?text=Bonjour%20Niani%20Senteurs%2C%20je%20souhaite%20passer%20une%20commande." class="contact-wa-main" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Passer une commande sur WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <img src="assets/logo-dark.png" alt="Niani Senteurs" class="footer-logo-img" />
+        <div class="footer-slogan">Rituels de femmes, réinventés</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Collection</h4>
+          <ul>
+            <li><a href="#collection">Peau de Reine</a></li>
+            <li><a href="#collection">Niani Noir</a></li>
+            <li><a href="#collection">Sahel Doré</a></li>
+            <li><a href="#coffret">Coffret Rituel du Soir</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>La Marque</h4>
+          <ul>
+            <li><a href="#histoire">Notre Histoire</a></li>
+            <li><a href="#fragrances">Nos Fragrances</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Suivre</h4>
+          <ul>
+            <li><a href="https://instagram.com/nianisenteurs" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="mailto:sirasarr@nianisenteurs.com">Email</a></li>
+            <li><a href="https://wa.me/221000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Niani Production Services SARL — Dakar, Sénégal</span>
+      <div class="footer-legal">
+        <a href="mailto:sirasarr@nianisenteurs.com">Mentions légales</a>
+        <a href="mailto:sirasarr@nianisenteurs.com">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== WHATSAPP FLOAT ===== -->
+<a class="whatsapp-float" href="https://wa.me/221000000000?text=Bonjour%20Niani%20Senteurs%2C%20je%20souhaite%20avoir%20plus%20d%27informations." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="whatsapp-tooltip">Commander ici</span>
+</a>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+
+  window.addEventListener('load', () => {
+    const img = document.getElementById('heroImg');
+    if (img) img.classList.add('loaded');
+  });
+
+  function openMenu() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  function selectVariant(btn) {
+    document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
