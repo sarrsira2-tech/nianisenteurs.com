@@ -124,15 +124,11 @@
     }
 
     .nav-logo {
-      display: flex; align-items: center;
+      font-family: Georgia, serif;
+      font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--creme); transition: color 0.4s; font-weight: normal;
     }
-    .nav-logo img {
-      height: 43px; width: auto; transition: opacity 0.4s;
-    }
-    .nav-logo .logo-white { opacity: 1; position: absolute; }
-    .nav-logo .logo-dark-img { opacity: 0; }
-    nav.scrolled .nav-logo .logo-white { opacity: 0; }
-    nav.scrolled .nav-logo .logo-dark-img { opacity: 1; }
+    nav.scrolled .nav-logo { color: var(--terracotta); }
 
     .nav-links {
       display: flex; gap: 36px; list-style: none; align-items: center;
@@ -246,6 +242,50 @@
       width: 1px; height: 80px;
       background: linear-gradient(to bottom, var(--or), transparent);
       opacity: 0; animation: fadeUp 0.9s ease 1.8s forwards;
+    }
+
+    /* ===== POURQUOI ===== */
+    #pourquoi {
+      background: var(--noir); padding: 100px 48px;
+    }
+    .pourquoi-inner {
+      max-width: 760px; margin: 0 auto; text-align: center;
+    }
+    .pourquoi-inner h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--creme);
+      margin-bottom: 32px; line-height: 1.3;
+    }
+    .pourquoi-inner h2 em { color: var(--or); font-style: italic; }
+    .pourquoi-body {
+      font-family: Arial, sans-serif;
+      font-size: 1rem; line-height: 2.0;
+      color: rgba(250,245,236,0.65); margin-bottom: 40px;
+    }
+    .pourquoi-triade {
+      display: flex; justify-content: center; gap: 0;
+      margin-top: 48px; border-top: 1px solid rgba(201,168,76,0.15);
+      padding-top: 48px;
+    }
+    .triade-item {
+      flex: 1; max-width: 220px; text-align: center;
+      padding: 0 32px;
+      border-right: 1px solid rgba(201,168,76,0.12);
+    }
+    .triade-item:last-child { border-right: none; }
+    .triade-phrase {
+      font-family: Georgia, serif; font-size: 1rem;
+      color: var(--or); display: block; margin-bottom: 6px;
+    }
+    .triade-desc {
+      font-family: Arial, sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.06em;
+      color: rgba(250,245,236,0.4);
+    }
+    @media (max-width: 600px) {
+      .pourquoi-triade { flex-direction: column; gap: 28px; }
+      .triade-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.12); padding: 0 0 28px; }
+      .triade-item:last-child { border-bottom: none; padding-bottom: 0; }
+      #pourquoi { padding: 72px 24px; }
     }
 
     /* ===== HISTOIRE ===== */
@@ -644,10 +684,7 @@
 
 <!-- ===== NAV ===== -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo" style="position:relative;height:36px;width:140px;">
-    <img src="assets/White logo.png" alt="Niani Senteurs" class="logo-white" />
-    <img src="assets/logo-dark.png" alt="Niani Senteurs" class="logo-dark-img" />
-  </a>
+  <a href="#hero" class="nav-logo">Niani Senteurs</a>
   <ul class="nav-links">
     <li><a href="#histoire">Histoire</a></li>
     <li><a href="#collection">Collection</a></li>
@@ -680,8 +717,9 @@
 
   <div class="hero-content">
     <p class="hero-pre">Maison de rituels parfumés &nbsp;·&nbsp; Dakar</p>
-    <h1 class="hero-title">Rituels de femmes,<br><em>réinventés.</em><br><span style="font-size:0.55em;color:rgba(250,245,236,0.75);font-style:normal;">Inspirés du thiouraye, révélés au monde.</span></h1>
-    <p class="hero-sub">Collection fondatrice &nbsp;–&nbsp; Accès limité</p>
+    <h1 class="hero-title">Rituels de femmes,<br><em>réinventés.</em></h1>
+    <p class="hero-sub" style="font-size:0.88rem;margin-bottom:16px;color:rgba(250,245,236,0.8);text-transform:none;letter-spacing:0.04em;">Inspirés du thiouraye, révélés dans une expérience sensorielle moderne.</p>
+    <p class="hero-sub">Collection fondatrice &nbsp;—&nbsp; Accès limité</p>
     <div class="hero-cta">
       <a href="#liste" class="btn btn-gold" style="padding:17px 52px;font-size:0.75rem;letter-spacing:0.24em;">Rejoindre la liste privée</a>
       <a href="#collection" class="btn btn-creme">Découvrir l'univers</a>
@@ -689,6 +727,35 @@
   </div>
 
   <div class="hero-scroll-line"></div>
+</section>
+
+<!-- ===== POURQUOI ===== -->
+<section id="pourquoi">
+  <div class="pourquoi-inner">
+    <span class="eyebrow reveal" style="display:block;">L'Essence</span>
+    <h2 class="reveal">Pourquoi <em>Niani Senteurs ?</em></h2>
+    <div class="or-line or-line-center reveal"></div>
+    <p class="pourquoi-body reveal">
+      Parce que certaines senteurs ne sont pas faites pour être oubliées.<br>
+      Inspirée du thiouraye — patrimoine olfactif d'Afrique de l'Ouest —<br>
+      chaque création est pensée comme une signature.<br>
+      Une peau nourrie. Un sillage chaud. Une présence qui reste.
+    </p>
+    <div class="pourquoi-triade reveal">
+      <div class="triade-item">
+        <span class="triade-phrase">Héritage</span>
+        <span class="triade-desc">Patrimoine olfactif d'Afrique de l'Ouest</span>
+      </div>
+      <div class="triade-item">
+        <span class="triade-phrase">Soin</span>
+        <span class="triade-desc">Karité &amp; Baobab — ingrédients sacrés</span>
+      </div>
+      <div class="triade-item">
+        <span class="triade-phrase">Sillage</span>
+        <span class="triade-desc">Une présence discrète et persistante</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ===== HISTOIRE ===== -->
@@ -703,14 +770,15 @@
 
     <div class="reveal-right">
       <span class="eyebrow">Notre Histoire</span>
-      <h2>L'héritage du<br>Royaume du Niani</h2>
+      <h2>Née d'une conviction,<br>portée par une femme</h2>
       <div class="or-line"></div>
       <p>
-        Niani Senteurs naît d'une conviction : les rituels de beauté des femmes africaines méritent d'être <strong>célébrés et portés au monde</strong>. Notre nom rend hommage au Royaume du Niani — berceau de féminité et de transmission.
+        Niani Senteurs est née d'une conviction simple : <strong>les rituels de beauté des femmes africaines méritent d'être célébrés</strong>, sublimés, et portés au monde avec la même exigence que les plus grandes maisons.
       </p>
       <p>
-        Derrière chaque produit, <strong>Sira Tiati Sarr</strong> — fondatrice de Niani Production Services. Elle a marié l'héritage olfactif de Dakar à l'exigence d'un packaging premium international.
+        Je suis née avec ces senteurs. Le thiouraye du soir, le karité du matin, la brume qui reste sur la peau toute la journée. J'ai voulu créer quelque chose qui honore cet héritage — sans en trahir l'âme.
       </p>
+      <p style="font-size:0.82rem;color:var(--texte-clair);opacity:0.7;font-style:italic;">— Sira Sarr, Fondatrice</p>
       <a href="#liste" class="cta-link">Suivre le lancement →</a>
     </div>
 
@@ -725,6 +793,7 @@
     <h2 style="color:var(--creme);">Trois univers.<br>Un seul rituel.</h2>
     <div class="or-line or-line-center"></div>
     <p>Crème Corps 230ml &amp; Brume Parfumée 236ml — Karité &amp; Baobab</p>
+    <p style="font-size:0.78rem;color:rgba(250,245,236,0.45);margin-top:12px;letter-spacing:0.06em;">Édition fondatrice. Produite en quantité limitée pour le lancement.</p>
   </div>
 
   <div class="collection-packshot reveal">
@@ -803,10 +872,10 @@
       <h2>La peau nourrie.<br>Le sillage qui reste.</h2>
       <div class="or-line"></div>
       <p>
-        Chaque application est un geste. Un moment pris pour soi, dans le silence du matin ou la chaleur du soir. La crème fond sur la peau, le beurre de karité l'enveloppe, l'huile de baobab la nourrit en profondeur.
+        Ce n'est pas une crème. C'est un geste. Le beurre de karité enveloppe. L'huile de baobab nourrit. Le musc révèle la peau.
       </p>
       <p>
-        Puis vient le sillage — discret, chaud, persistant. Celui qui reste longtemps après que vous êtes partie.
+        Puis vient le sillage. Discret. Chaud. Persistant. Celui qui reste longtemps après que vous êtes partie.
       </p>
       <div class="rituel-ingredients">
         <div class="ingredient">
@@ -881,7 +950,7 @@
     <h2 class="reveal">Soyez parmi<br>les premières</h2>
     <div class="or-line or-line-center reveal"></div>
     <p class="reveal">
-      Recevez l'annonce officielle du lancement, les prix fondateurs et l'accès prioritaire aux premiers coffrets.
+      Les premières inscrites recevront l'annonce officielle du lancement, les prix fondateurs et l'accès prioritaire aux premiers coffrets.
     </p>
 
     <div id="form-wrapper" class="reveal">
@@ -927,7 +996,7 @@
       <div>
         <div class="footer-brand">Niani Senteurs</div>
         <div class="footer-tagline">Rituels de femmes, réinventés</div>
-        <div class="footer-prelancement">Pré-lancement — Collection fondatrice en préparation</div>
+        <div class="footer-prelancement">Pré-lancement · Collection fondatrice en préparation</div>
       </div>
       <div class="footer-links">
         <div class="footer-col">
