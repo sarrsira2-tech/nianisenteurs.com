@@ -127,7 +127,7 @@
       display: flex; align-items: center;
     }
     .nav-logo img {
-      height: 36px; width: auto; transition: opacity 0.4s;
+      height: 43px; width: auto; transition: opacity 0.4s;
     }
     .nav-logo .logo-white { opacity: 1; position: absolute; }
     .nav-logo .logo-dark-img { opacity: 0; }
@@ -189,12 +189,9 @@
 
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(26,26,26,0.82) 0%,
-        rgba(26,26,26,0.3) 45%,
-        rgba(26,26,26,0.1) 100%
-      );
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 100%),
+        linear-gradient(to top, rgba(26,26,26,0.75) 0%, rgba(26,26,26,0.1) 55%);
     }
 
     .hero-content {
@@ -683,10 +680,10 @@
 
   <div class="hero-content">
     <p class="hero-pre">Maison de rituels parfumés &nbsp;·&nbsp; Dakar</p>
-    <h1 class="hero-title">Rituels de femmes,<br><em>réinventés.</em></h1>
-    <p class="hero-sub">Collection fondatrice · Pré-lancement 2026</p>
+    <h1 class="hero-title">Rituels de femmes,<br><em>réinventés.</em><br><span style="font-size:0.55em;color:rgba(250,245,236,0.75);font-style:normal;">Inspirés du thiouraye, révélés au monde.</span></h1>
+    <p class="hero-sub">Collection fondatrice &nbsp;–&nbsp; Accès limité</p>
     <div class="hero-cta">
-      <a href="#liste" class="btn btn-gold">Rejoindre la liste privée</a>
+      <a href="#liste" class="btn btn-gold" style="padding:17px 52px;font-size:0.75rem;letter-spacing:0.24em;">Rejoindre la liste privée</a>
       <a href="#collection" class="btn btn-creme">Découvrir l'univers</a>
     </div>
   </div>
