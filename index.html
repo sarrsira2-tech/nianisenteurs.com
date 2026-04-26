@@ -143,9 +143,9 @@
 
     .nav-logo {
       font-family: Georgia, serif;
-      font-size: 1.18rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--creme); transition: color 0.4s; font-weight: normal;
-      text-shadow: 0 1px 12px rgba(0,0,0,0.55);
+      font-size: 1.32rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--creme); transition: color 0.4s, text-shadow 0.4s; font-weight: normal;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.85), 0 0 60px rgba(0,0,0,0.4);
     }
     nav.scrolled .nav-logo { color: var(--terracotta); text-shadow: none; }
 
@@ -332,7 +332,7 @@
     /* ===== SENSORIELLE ===== */
     #sensorielle {
       background: linear-gradient(160deg, #4A2206 0%, var(--terracotta) 100%);
-      padding: 140px 48px; text-align: center;
+      padding: 100px 48px; text-align: center;
     }
     .sensorielle-inner { max-width: 480px; margin: 0 auto; }
     .sensorielle-anchor {
@@ -390,7 +390,7 @@
 
     /* ===== HISTOIRE ===== */
     #histoire {
-      padding: 120px 48px;
+      padding: 88px 48px;
       background: var(--creme);
     }
 
@@ -615,7 +615,7 @@
 
     /* ===== LISTE PRIVÉE ===== */
     #liste {
-      padding: 120px 48px;
+      padding: 96px 48px;
       background: var(--creme);
     }
 
@@ -916,7 +916,7 @@
 </section>
 
 <!-- ===== UNIVERS ===== -->
-<section id="univers" style="background:var(--terracotta-dark);padding:100px 48px;">
+<section id="univers" style="background:var(--terracotta-dark);padding:80px 48px;">
 
   <div style="text-align:center;max-width:560px;margin:0 auto 72px;">
     <span class="eyebrow" style="color:var(--or);">Les Signatures</span>
@@ -1047,6 +1047,21 @@
     </div>
 
     <div id="form-wrapper" class="reveal">
+      <!--
+        FORMULAIRE — Connexion liste privée
+        ─────────────────────────────────────────────────────────────
+        Actuellement connecté à : Formspree (https://formspree.io/f/mgordplj)
+        Les inscriptions arrivent par email à sirasarr@nianisenteurs.com
+
+        Pour changer de service, remplacer l'URL dans le fetch() du script :
+          • Formspree  → https://formspree.io/f/VOTRE_ID
+          • MailerLite → utiliser leur API (voir docs.mailerlite.com)
+          • Google Form → remplacer le <form> par un iframe Google Form
+
+        Le bouton "Rejoindre la liste privée" dans toutes les sections
+        pointe vers href="#liste" → mène à ce formulaire. ✓
+        ─────────────────────────────────────────────────────────────
+      -->
       <form class="liste-form" id="launchForm">
 
         <div class="form-field">
