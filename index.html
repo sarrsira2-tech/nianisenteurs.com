@@ -143,10 +143,11 @@
 
     .nav-logo {
       font-family: Georgia, serif;
-      font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase;
+      font-size: 1.18rem; letter-spacing: 0.3em; text-transform: uppercase;
       color: var(--creme); transition: color 0.4s; font-weight: normal;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.55);
     }
-    nav.scrolled .nav-logo { color: var(--terracotta); }
+    nav.scrolled .nav-logo { color: var(--terracotta); text-shadow: none; }
 
     .nav-links {
       display: flex; gap: 36px; list-style: none; align-items: center;
@@ -828,6 +829,33 @@
   <div class="hero-scroll-line"></div>
 </section>
 
+<!-- ===== COLLECTION ===== -->
+<section id="collection">
+
+  <div class="collection-header reveal">
+    <span class="eyebrow" style="color:var(--or);">La Collection</span>
+    <h2 style="color:var(--creme);">La collection fondatrice.</h2>
+    <p style="font-family:Georgia,serif;font-size:1.05rem;color:var(--or);font-style:italic;margin-bottom:16px;">Crème corps &amp; brume parfumée.<br>Un rituel. Une signature.</p>
+    <div class="or-line or-line-center"></div>
+    <p>Trois univers olfactifs.<br>Une même intention : transformer le soin du corps en rituel.</p>
+  </div>
+
+  <div class="collection-packshot reveal">
+    <img src="assets/produits-packshot.png" alt="Collection Niani Senteurs — Peau de Reine, Niani Noir, Sahel Doré" loading="lazy" />
+  </div>
+
+  <div class="collection-packshot reveal" style="max-width:780px;margin:0 auto 0;">
+    <img src="assets/cremes-packshot.jpg" alt="Niani Senteurs — Crèmes Corps 230ml, Karité & Baobab" loading="lazy"
+      style="width:100%;border:1px solid rgba(201,168,76,0.15);" />
+  </div>
+
+  <!-- CTA collection -->
+  <div style="text-align:center;padding:64px 48px 80px;max-width:560px;margin:0 auto;">
+    <a href="#liste" class="btn btn-gold reveal" style="padding:17px 52px;font-size:0.72rem;letter-spacing:0.22em;">Rejoindre la liste privée</a>
+  </div>
+
+</section>
+
 <!-- ===== SENSORIELLE ===== -->
 <section id="sensorielle">
   <div class="sensorielle-inner reveal">
@@ -849,71 +877,51 @@
   </div>
 </section>
 
-<!-- ===== POURQUOI ===== -->
-<section id="pourquoi">
-  <div class="pourquoi-bg"></div>
-  <div class="pourquoi-overlay"></div>
-  <div class="pourquoi-inner">
-    <span class="eyebrow reveal" style="display:block;">L'Essence</span>
-    <h2 class="reveal">Pourquoi <em>Niani Senteurs ?</em></h2>
-    <div class="or-line or-line-center reveal"></div>
-    <p class="pourquoi-body reveal" style="font-size:1.05rem;line-height:2.2;">
-      Certaines senteurs ne sont pas faites pour être expliquées.<br>
-      <em style="color:var(--or);">Elles se reconnaissent.</em>
-    </p>
-    <p class="pourquoi-body reveal" style="font-size:0.93rem;">
-      Inspirée du thiouraye — héritage olfactif d'Afrique de l'Ouest —<br>
-      chaque création est pensée comme une signature.
-    </p>
-    <p class="pourquoi-body reveal" style="font-size:1.1rem;line-height:2.4;">
-      Pas un parfum.<br>
-      <em style="color:var(--or);font-size:1.2rem;">Une empreinte.</em>
-    </p>
-  </div>
-</section>
+<!-- ===== COFFRET ===== -->
+<section id="coffret">
+  <div class="coffret-inner">
 
-<!-- ===== HISTOIRE ===== -->
-<section id="histoire">
-  <div class="histoire-inner">
-
-    <div class="histoire-img reveal-left">
-      <img src="assets/sira-fondatrice.jpg" alt="Sira Tiati Sarr — Fondatrice Niani Senteurs" loading="lazy" style="object-position: center top;" />
-      <div class="histoire-img-frame"></div>
-      <span class="histoire-img-tag">Dakar, Sénégal</span>
+    <div class="coffret-img reveal-left">
+      <img src="assets/coffret-premium.png" alt="Coffret Édition Fondatrice — Niani Senteurs" loading="lazy" />
+      <div class="coffret-img-frame"></div>
+      <div class="coffret-img-label">Édition Fondatrice</div>
     </div>
 
-    <div class="reveal-right">
-      <span class="eyebrow">La Fondatrice</span>
-      <h2>L'héritage du<br>Royaume du Niani</h2>
+    <div class="coffret-text reveal-right">
+      <span class="eyebrow">Coffret Premium</span>
+      <h2>Un coffret.<br><em>Mais pas seulement.</em></h2>
       <div class="or-line"></div>
-      <p>Niani Senteurs est née d'une conviction.</p>
-      <p>Certaines traditions ne doivent pas disparaître.<br>Elles doivent <strong>évoluer</strong>.</p>
-      <p>Je suis née avec ces senteurs.<br>Le thiouraye. Le musc. Les rituels du soir.<br>Aujourd'hui, je les réinterprète.</p>
-      <p>Avec exigence.<br>Avec intention.<br>Avec respect.</p>
-      <p style="font-size:0.82rem;color:var(--texte-clair);opacity:0.7;font-style:italic;margin-top:28px;">— Sira Sarr, Fondatrice</p>
-      <a href="#liste" class="cta-link" style="margin-top:8px;display:inline-block;">Suivre le lancement →</a>
+
+      <p>Un rituel complet.</p>
+      <p>Pensé pour être offert.<br>Ou gardé.</p>
+
+      <blockquote class="coffret-quote">
+        Selon celle que vous êtes.
+      </blockquote>
+
+      <div class="coffret-contenu">
+        <div class="coffret-contenu-title">Contenu</div>
+        <div class="coffret-row">Crème Corps 230ml — Karité &amp; Baobab</div>
+        <div class="coffret-row">Brume Parfumée 236ml — Fine Fragrance Mist</div>
+        <div class="coffret-row">Boîte rigide aimantée &amp; insert mousse noire</div>
+        <div class="coffret-row">Message intérieur imprimé</div>
+      </div>
+
+      <div class="coffret-cta">
+        <a href="#liste" class="btn btn-gold">Accès prioritaire</a>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- ===== COLLECTION ===== -->
-<section id="collection">
+<!-- ===== UNIVERS ===== -->
+<section id="univers" style="background:var(--terracotta-dark);padding:100px 48px;">
 
-  <div class="collection-header reveal">
-    <span class="eyebrow" style="color:var(--or);">La Collection</span>
-    <h2 style="color:var(--creme);">La collection fondatrice.<br><em style="color:var(--or);">Trois signatures.</em></h2>
+  <div style="text-align:center;max-width:560px;margin:0 auto 72px;">
+    <span class="eyebrow" style="color:var(--or);">Les Signatures</span>
+    <h2 style="color:var(--creme);font-size:clamp(1.8rem,3vw,2.4rem);">Trois univers.<br><em style="color:var(--or);">Une seule intention.</em></h2>
     <div class="or-line or-line-center"></div>
-    <p>Crème Corps 230ml &amp; Brume Parfumée 236ml</p>
-  </div>
-
-  <div class="collection-packshot reveal">
-    <img src="assets/produits-packshot.png" alt="Collection Niani Senteurs — Peau de Reine, Niani Noir, Sahel Doré" loading="lazy" />
-  </div>
-
-  <div class="collection-packshot reveal" style="max-width:780px;margin:0 auto 80px;">
-    <img src="assets/cremes-packshot.jpg" alt="Niani Senteurs — Crèmes Corps 230ml, Karité & Baobab" loading="lazy"
-      style="width:100%;border:1px solid rgba(201,168,76,0.15);" />
   </div>
 
   <div class="collection-univers">
@@ -923,7 +931,7 @@
       <div class="univers-num">01</div>
       <p class="univers-gamme">Gamme Jour</p>
       <h3 class="univers-nom">Peau de Reine</h3>
-      <p class="univers-notes">Musc tahara — intime, propre, silencieux</p>
+      <p class="univers-notes">Peau propre. Intime. Inoubliable.</p>
     </div>
 
     <!-- Niani Noir -->
@@ -935,7 +943,7 @@
         <div class="univers-num">02</div>
         <p class="univers-gamme" style="color:var(--or);">Gamme Nuit</p>
         <h3 class="univers-nom">Niani Noir</h3>
-        <p class="univers-notes">Oud fumé — profond, enveloppant, nocturne</p>
+        <p class="univers-notes">Oud fumé. Profond. Nocturne.</p>
       </div>
     </div>
 
@@ -945,16 +953,15 @@
       <span class="univers-badge">Édition Limitée</span>
       <p class="univers-gamme">Gamme Jour</p>
       <h3 class="univers-nom">Sahel Doré</h3>
-      <p class="univers-notes">Floral chaud — lumineux, maîtrisé</p>
+      <p class="univers-notes">Floral chaud. Lumineux. Maîtrisé.</p>
     </div>
 
   </div>
 
-  <!-- CTA collection -->
   <div style="text-align:center;padding:64px 48px 0;max-width:560px;margin:0 auto;">
-    <p style="font-family:Georgia,serif;font-size:1rem;color:rgba(250,245,236,0.55);line-height:2;margin-bottom:6px;">Produite en quantité limitée.</p>
-    <p style="font-family:Georgia,serif;font-size:1rem;color:rgba(250,245,236,0.55);line-height:2;margin-bottom:40px;font-style:italic;">Réservée à celles qui savent attendre.</p>
-    <a href="#liste" class="btn btn-gold" style="padding:17px 52px;font-size:0.72rem;letter-spacing:0.22em;">Rejoindre la liste privée</a>
+    <p class="reveal" style="font-family:Georgia,serif;font-size:1rem;color:rgba(250,245,236,0.55);line-height:2;margin-bottom:6px;">Produite en quantité limitée.</p>
+    <p class="reveal" style="font-family:Georgia,serif;font-size:1rem;color:rgba(250,245,236,0.55);line-height:2;margin-bottom:40px;font-style:italic;">Réservée à celles qui savent attendre.</p>
+    <a href="#liste" class="btn btn-gold reveal" style="padding:17px 52px;font-size:0.72rem;letter-spacing:0.22em;">Rejoindre la liste privée</a>
   </div>
 
 </section>
@@ -996,45 +1003,26 @@
   </div>
 </section>
 
-<!-- Triptyque pleine largeur -->
-<div style="overflow:hidden;line-height:0;background:var(--noir);">
-  <img src="assets/rituel-triptyque.jpg" alt="Rituel Niani Senteurs — Sensoriel" loading="lazy"
-    style="width:100%;height:480px;object-fit:cover;object-position:center center;display:block;" />
-</div>
+<!-- ===== HISTOIRE ===== -->
+<section id="histoire">
+  <div class="histoire-inner">
 
-<!-- ===== COFFRET ===== -->
-<section id="coffret">
-  <div class="coffret-inner">
-
-    <div class="coffret-img reveal-left">
-      <img src="assets/coffret-premium.png" alt="Coffret Édition Fondatrice — Niani Senteurs" loading="lazy" />
-      <div class="coffret-img-frame"></div>
-      <div class="coffret-img-label">Édition Fondatrice</div>
+    <div class="histoire-img reveal-left">
+      <img src="assets/sira-fondatrice.jpg" alt="Sira Tiati Sarr — Fondatrice Niani Senteurs" loading="lazy" style="object-position: center top;" />
+      <div class="histoire-img-frame"></div>
+      <span class="histoire-img-tag">Dakar, Sénégal</span>
     </div>
 
-    <div class="coffret-text reveal-right">
-      <span class="eyebrow">Coffret Premium</span>
-      <h2>Un coffret.<br><em>Mais pas seulement.</em></h2>
+    <div class="reveal-right">
+      <span class="eyebrow">La Fondatrice</span>
+      <h2>L'héritage du<br>Royaume du Niani</h2>
       <div class="or-line"></div>
-
-      <p>Un rituel complet.</p>
-      <p>Pensé pour être offert.<br>Ou gardé.</p>
-
-      <blockquote class="coffret-quote">
-        Selon celle que vous êtes.
-      </blockquote>
-
-      <div class="coffret-contenu">
-        <div class="coffret-contenu-title">Contenu</div>
-        <div class="coffret-row">Crème Corps 230ml — Karité &amp; Baobab</div>
-        <div class="coffret-row">Brume Parfumée 236ml — Fine Fragrance Mist</div>
-        <div class="coffret-row">Boîte rigide aimantée &amp; insert mousse noire</div>
-        <div class="coffret-row">Message intérieur imprimé</div>
-      </div>
-
-      <div class="coffret-cta">
-        <a href="#liste" class="btn btn-gold">Accès prioritaire</a>
-      </div>
+      <p style="margin-bottom:24px;">Niani Senteurs est née d'une conviction.</p>
+      <p style="margin-bottom:24px;">Certaines traditions ne doivent pas disparaître.<br>Elles doivent <strong>évoluer</strong>.</p>
+      <p style="margin-bottom:24px;">Je suis née avec ces senteurs.<br>Le thiouraye. Le musc. Les rituels du soir.<br>Aujourd'hui, je les réinterprète.</p>
+      <p style="margin-bottom:32px;">Avec exigence.<br>Avec intention.<br>Avec respect.</p>
+      <p style="font-size:0.88rem;color:var(--texte-clair);font-style:italic;margin-bottom:28px;">— Sira Sarr, Fondatrice</p>
+      <a href="#liste" class="cta-link">Suivre le lancement →</a>
     </div>
 
   </div>
